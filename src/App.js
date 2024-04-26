@@ -1,12 +1,18 @@
 import React from "react";
-import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import "./App.css";
 import HomePage from "./pages/HomePage/HomePage";
+import Header from "./components/Header/Header";
 
 function App() {
   return (
-    <main className="bg-white min-h-dvh">
-      <HomePage />
-    </main>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        {/* <Route path="/about" /> */}
+      </Routes>
+    </BrowserRouter>
   );
 }
 
