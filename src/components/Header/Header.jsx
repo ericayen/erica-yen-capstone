@@ -6,7 +6,7 @@ function Header() {
   const location = useLocation();
   return (
     <div className="w-dvw bg-white py-4 font-ms selection:bg-brown-light selection:text-white">
-      <nav className="leading-loose flex justify-center items-center space-x-1 overflow-scroll sm:space-x-2 lg:space-x-4">
+      <nav className="leading-loose flex justify-center items-center space-x-1 sm:space-x-2 lg:space-x-4">
         {[
           ["Home", "/"],
           ["About", "/about"],
