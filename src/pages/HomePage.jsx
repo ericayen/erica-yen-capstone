@@ -22,14 +22,14 @@ function HomePage() {
   }, []);
 
   return (
-    <div className="px-2 bg-white min-h-dvh selection:bg-brown-light selection:text-white">
-      <div className="pt-28 flex flex-col items-center justify-center content-between">
-        <div className="leading-loose text-brown w-screen whitespace-nowrap overflow-hidden animate-typing font-ms text-2xl sm:text-4xl lg:text-5xl text-center">
+    <body className="px-2 bg-white min-h-dvh selection:bg-brown-light selection:text-white">
+      <div className="flex flex-col items-center justify-center content-between">
+        <h1 className="leading-loose text-brown w-screen whitespace-nowrap overflow-hidden animate-typing font-ms text-2xl sm:text-4xl lg:text-5xl text-center">
           Welcome to{" "}
           <span className="font-semibold text-brown-dark pe-2 text-3xl sm:text-6xl lg:text-7xl">
             Express-<span className="inline-block animate-bounce">o</span>
           </span>
-        </div>
+        </h1>
       </div>
 
       {showComponent && (
@@ -60,7 +60,7 @@ function HomePage() {
           </button>
         </div>
       )}
-    </div>
+    </body>
   );
 }
 
