@@ -1,12 +1,12 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-const logo = require("../../assets/Logo/logo.png");
+const logo = require("../assets/Logo/logo.png");
 
 function Header() {
   const location = useLocation();
   return (
-    <div className="w-dvw bg-white py-4 font-ms selection:bg-brown-light selection:text-white">
-      <nav className="leading-loose flex justify-center items-center space-x-1 sm:space-x-2 lg:space-x-4">
+    <div className="py-4 pb-12 bg-white w-dvw font-ms lg:pb-28 selection:bg-brown-light selection:text-white">
+      <nav className="flex items-center justify-center space-x-1 leading-loose sm:space-x-2 lg:space-x-4">
         {[
           ["Home", "/"],
           ["About", "/about"],
@@ -17,10 +17,8 @@ function Header() {
           <>
             <a
               href={url}
-              className={`leading-loose rounded-full px-3 py-2 text-xs md:text-sm lg:text-base hover:bg-beige-light ${
-                location.pathname === url
-                  ? "text-brown-dark font-medium"
-                  : "text-brown"
+              className={`leading-loose rounded-full px-3 py-2 font-medium text-xs md:text-sm lg:text-base hover:bg-beige-light ${
+                location.pathname === url ? "text-brown-dark" : "text-brown"
               } ${
                 location.pathname === url && url === "/"
                   ? "underline underline-offset-8"
