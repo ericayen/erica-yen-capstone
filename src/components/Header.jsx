@@ -5,8 +5,8 @@ const logo = require("../assets/Logo/logo.png");
 function Header() {
   const location = useLocation();
   return (
-    <div className="w-dvw bg-white py-4 pb-12 font-ms lg:pb-28 selection:bg-brown-light selection:text-white">
-      <nav className="leading-loose flex justify-center items-center space-x-1 sm:space-x-2 lg:space-x-4">
+    <div className="py-4 pb-12 bg-white w-dvw font-ms lg:pb-28 selection:bg-brown-light selection:text-white">
+      <nav className="flex items-center justify-center space-x-1 leading-loose sm:space-x-2 lg:space-x-4">
         {[
           ["Home", "/"],
           ["About", "/about"],
