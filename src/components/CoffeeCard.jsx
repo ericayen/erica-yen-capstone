@@ -5,19 +5,6 @@ function CoffeeCard({ arabicaData, robustaData, libericaData, excelsaData }) {
     return;
   }
 
-  //   const data = robustaData ? robustaData : libericaData;
-
-  //   function getHistory(data) {
-  //     if (data.length > 0 && data[0].history) {
-  //       return data[0].history;
-  //     }
-  //     if (data.length === 1) {
-  //       return data.history;
-  //     } else {
-  //       return "History data not available";
-  //     }
-  //   }
-
   let data;
   if (arabicaData) {
     data = arabicaData;
@@ -45,6 +32,7 @@ function CoffeeCard({ arabicaData, robustaData, libericaData, excelsaData }) {
           <p className="text-sm">{getHistory(data)}</p>
         </div>
       </div>
+
       <div className="flex justify-center w-full gap-2 py-2">
         <a
           href="#1"
