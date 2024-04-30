@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { apiUrl } from "../utils";
-import CoffeeCard from "../components/CoffeeCard";
-import { useNavigate } from "react-router-dom";
+import BeansCard from "../components/BeansCard";
 
 function BeansPage() {
-  const navigate = useNavigate();
-
   const [arabicaData, setArabicaData] = useState([]);
   const [robustaData, setRobustaData] = useState([]);
   const [libericaData, setLibericaData] = useState({});
@@ -37,36 +34,11 @@ function BeansPage() {
         <span className="font-semibold">Beans</span>
       </h1>
 
-      <section>
-        <div
-          id="arabica"
-          className="mb-2 collapse collapse-plus bg-beige-light"
-          onClick={() => {
-            navigate("#arabica");
-          }}
-        >
-          <input type="radio" name="my-accordion-3" />
-          <h2 className="text-lg font-medium collapse-title">Arabica</h2>
-          <CoffeeCard arabicaData={arabicaData} />
-        </div>
-
-        <div className="mb-2 collapse collapse-plus bg-beige-light">
-          <input type="radio" name="my-accordion-3" />
-          <h2 className="text-lg font-medium collapse-title">Robusta</h2>
-          <CoffeeCard robustaData={robustaData} />
-        </div>
-
-        <div className="mb-2 collapse collapse-plus bg-beige-light">
-          <input type="radio" name="my-accordion-3" />
-          <h2 className="text-lg font-medium collapse-title">Liberica</h2>
-          <CoffeeCard libericaData={libericaData} />
-        </div>
-
-        <div className="mb-2 collapse collapse-plus bg-beige-light">
-          <input type="radio" name="my-accordion-3" />
-          <h2 className="text-lg font-medium collapse-title">Excelsa</h2>
-          <CoffeeCard excelsaData={excelsaData} />
-        </div>
+      <section className="flex flex-wrap justify-between">
+        <BeansCard arabicaData={arabicaData} />
+        <BeansCard robustaData={robustaData} />
+        <BeansCard libericaData={libericaData} />
+        <BeansCard excelsaData={excelsaData} />
       </section>
     </main>
   );
