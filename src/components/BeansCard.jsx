@@ -35,6 +35,10 @@ function BeansCard({ arabicaData, robustaData, libericaData, excelsaData }) {
     }
   }
 
+  const handleLeanMore = () => {
+    navigate(`/beans/${getTitle(data)}`, { state: { data } });
+  };
+
   return (
     <div className="mb-2 collapse collapse-plus bg-beige-light">
       <input type="radio" name="my-accordion-3" />
@@ -46,7 +50,7 @@ function BeansCard({ arabicaData, robustaData, libericaData, excelsaData }) {
           <div className="items-center card-body">
             <p className="text-sm lg:text-base">{getHistory(data)}</p>
             <button
-              onClick={() => navigate(`/beans/${getTitle(data)}`)}
+              onClick={handleLeanMore}
               className="px-3 py-2 mt-4 text-sm font-medium text-white border border-solid rounded-full w-fit bg-brown border-brown sm:px-4 lg:px-5 lg:text-base hover:bg-white hover:text-brown hover:border-solid hover:border hover:border-brown active:scale-95"
             >
               Learn more
