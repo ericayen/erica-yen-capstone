@@ -30,6 +30,7 @@ Anyone with an interest in coffee can use the app. They will be able to access t
 
 - HTML
 - Tailwind CSS
+- Daisy UI
 - React
 - Node
 - Express

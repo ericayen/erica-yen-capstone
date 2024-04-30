@@ -11,7 +11,7 @@ function Header() {
           ["Home", "/"],
           ["About", "/about"],
           ["Beans", "/beans"],
-          ["Drinks", "/drinks"],
+          // ["Drinks", "/drinks"],
           ["Quiz", "/quiz"],
         ].map(([title, url]) => (
           <>
