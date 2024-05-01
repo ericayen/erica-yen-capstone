@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { apiUrl } from "../utils";
 
-function Quiz() {
+function Quiz({ onSubmit }) {
   const [questions, setQuestions] = useState([]);
   const [responses, setResponses] = useState([]);
   const [answers, setAnswers] = useState({});
@@ -28,7 +28,6 @@ function Quiz() {
   };
 
   useEffect(() => {
-    document.title = "Take a Quiz";
     getQuestions();
     getResponses();
   }, []);
@@ -59,6 +58,7 @@ function Quiz() {
     });
     console.log("Total weight:", totalWeight);
     setAnswers([]);
+    onSubmit();
     e.target.reset();
   };
 
@@ -71,16 +71,13 @@ function Quiz() {
             <h3 className="pt-8 pb-2 text-sm font-medium sm:text-lg lg:text-xl">
               {question.question}
             </h3>
-            <ul>
+            <ul className="flex flex-col m-auto w-fit">
               {responses
                 .filter(
                   (response) => response.question_id === question.question_id
                 )
                 .map((response) => (
-                  <li
-                    key={response.response_id}
-                    className="flex items-center justify-center "
-                  >
+                  <li key={response.response_id} className="flex items-center ">
                     <input
                       type="radio"
                       className="mr-2 radio radio-xs checked:bg-red"
@@ -108,7 +105,7 @@ function Quiz() {
         ))}
         <button
           type="submit"
-          className="px-3 py-2 mt-4 text-sm font-medium text-white border border-solid rounded-full w-fit bg-brown border-brown sm:px-4 lg:px-5 lg:text-base hover:bg-white hover:text-brown hover:border-solid hover:border hover:border-brown active:scale-95"
+          className="px-3 py-2 mt-8 text-sm font-medium text-white border border-solid rounded-full w-fit bg-brown border-brown sm:px-4 lg:px-5 lg:text-base hover:bg-white hover:text-brown hover:border-solid hover:border hover:border-brown active:scale-95"
         >
           Submit
         </button>

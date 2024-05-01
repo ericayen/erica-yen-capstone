@@ -1,12 +1,36 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { apiUrl } from "../utils";
+import React, { useEffect, useState, useRef } from "react";
 import Quiz from "../components/Quiz";
+import QuizResult from "../components/QuizResult";
 
-function QuizStartPage() {
+function QuizPage() {
   const [clicked, setClicked] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const quizRef = useRef(null);
 
-  const handleClick = () => setClicked(true);
+  useEffect(() => {
+    document.title = "Take a Quiz";
+
+    if (clicked && quizRef.current) {
+      setTimeout(() => {
+        window.scrollTo({
+          top: quizRef.current.offsetTop,
+          behavior: "smooth",
+        });
+      }, 0);
+    }
+  }, [clicked]);
+
+  const handleClick = () => {
+    setClicked(true);
+  };
+
+  const handleSubmit = () => {
+    setSubmitted(true);
+    console.log("Form submitted. submitted:", submitted);
+  };
+
+  console.log("clicked:", clicked);
+  console.log("submitted:", submitted);
 
   return (
     <main className="w-screen px-8 leading-loose text-center bg-white sm:px-24 lg:px-36 min-h-dvh font-ms text-brown-dark selection:bg-brown-light selection:text-white">
@@ -19,13 +43,18 @@ function QuizStartPage() {
       </h2>
       <button
         onClick={() => handleClick()}
-        className="px-3 py-2 mt-8 mb-12 text-sm font-medium text-white border border-solid rounded-full lg:mb-28 w-fit bg-brown border-brown sm:px-4 lg:px-5 lg:text-base hover:bg-white hover:text-brown hover:border-solid hover:border hover:border-brown active:scale-95"
+        className="px-3 py-2 mt-8 text-sm font-medium text-white border border-solid rounded-full w-fit bg-brown border-brown sm:px-4 lg:px-5 lg:text-base hover:bg-white hover:text-brown hover:border-solid hover:border hover:border-brown active:scale-95"
       >
-        Let's go!
+        Let's start!
       </button>
-      {clicked && <Quiz />}
+      {clicked && !submitted && (
+        <div ref={quizRef} className="h-dvh">
+          <Quiz onSubmit={handleSubmit} />
+        </div>
+      )}
+      {submitted && <QuizResult />}
     </main>
   );
 }
 
-export default QuizStartPage;
+export default QuizPage;
