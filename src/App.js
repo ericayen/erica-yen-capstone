@@ -7,6 +7,7 @@ import AboutPage from "./pages/AboutPage";
 import BeansPage from "./pages/BeansPage";
 import BeansDetailPage from "./pages/BeansDetailPage";
 import QuizPage from "./pages/QuizPage";
+import QuizStartPage from "./pages/QuizStartPage";
 import Footer from "./components/Footer";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/beans" element={<BeansPage />} />
         <Route path="/beans/:id" element={<BeansDetailPage />} />
+        <Route path="/quiz/start" element={<QuizStartPage />} />
         <Route path="/quiz" element={<QuizPage />} />
       </Routes>
       <Footer />

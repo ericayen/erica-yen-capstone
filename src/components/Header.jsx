@@ -12,7 +12,7 @@ function Header() {
           ["About", "/about"],
           ["Beans", "/beans"],
           // ["Drinks", "/drinks"],
-          ["Quiz", "/quiz"],
+          ["Quiz", "/quiz/start"],
         ].map(([title, url]) => (
           <>
             <a
