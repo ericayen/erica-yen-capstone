@@ -1,8 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { apiUrl } from "../utils";
+import { useNavigate } from "react-router-dom";
 
-function Quiz({ onSubmit }) {
+function Quiz() {
+  const navigate = useNavigate();
+
   const [questions, setQuestions] = useState([]);
   const [responses, setResponses] = useState([]);
   const [answers, setAnswers] = useState({});
@@ -50,18 +53,13 @@ function Quiz({ onSubmit }) {
       alert("Please answer all the questions!");
       return;
     }
-    let totalWeight = 0;
-    Object.values(answers).forEach((answer) => {
-      if (answer) {
-        totalWeight += answer.weight;
-      }
+    navigate("/quiz/result", { state: { answers } });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
     });
-    console.log("Total weight:", totalWeight);
-    onSubmit(answers);
-    e.target.reset();
   };
 
-  console.log(answers);
   return (
     <>
       <form onSubmit={handleSubmit}>
