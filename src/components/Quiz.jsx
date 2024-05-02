@@ -1,10 +1,11 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { apiUrl } from "../utils";
 import { useNavigate } from "react-router-dom";
 
 function Quiz() {
   const navigate = useNavigate();
+  const quizRef = useRef(null);
 
   const [questions, setQuestions] = useState([]);
   const [responses, setResponses] = useState([]);
@@ -49,10 +50,29 @@ function Quiz() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!answers) {
+
+    const answered = Object.keys(answers).map(Number);
+    const unanswered = questions.filter(
+      (question) => !answered.includes(question.question_id)
+    );
+
+    if (unanswered.length > 0) {
+      const updated = questions.map((question) => ({
+        ...question,
+        unanswered: unanswered.some(
+          (unanswered) => unanswered.question_id === question.question_id
+        ),
+      }));
+
+      window.scrollTo({
+        top: quizRef.current.offsetTop,
+        behavior: "smooth",
+      });
+      setQuestions(updated);
       alert("Please answer all the questions!");
       return;
     }
+
     navigate("/quiz/result", { state: { answers } });
     window.scrollTo({
       top: 0,
@@ -61,45 +81,53 @@ function Quiz() {
   };
 
   return (
-    <>
+    <div ref={quizRef}>
       <form onSubmit={handleSubmit}>
-        {questions.map((question) => (
-          <div key={question.question_id}>
-            <h3 className="pt-8 pb-2 text-sm font-medium sm:text-lg lg:text-xl">
-              {question.question}
-            </h3>
-            <ul className="flex flex-col m-auto w-fit">
-              {responses
-                .filter(
-                  (response) => response.question_id === question.question_id
-                )
-                .map((response) => (
-                  <li key={response.response_id} className="flex items-center ">
-                    <input
-                      type="radio"
-                      className="mr-2 radio radio-xs checked:bg-red"
-                      id={response.response_id}
-                      name={`question_${question.question_id}`}
-                      value={response.option}
-                      onChange={(e) =>
-                        handleResponseChange(
-                          question.question_id,
-                          e.target.value
-                        )
-                      }
-                      required
-                    />
-                    <label
-                      htmlFor={response.response_id}
-                      className="cursor-pointer"
+        {questions.map((question) => {
+          return (
+            <div key={question.question_id}>
+              <h3
+                className={`pt-8 pb-2 text-sm font-medium sm:text-lg lg:text-xl ${
+                  question.unanswered ? "text-red" : ""
+                }`}
+              >
+                {question.question}
+              </h3>
+              <ul className="flex flex-col m-auto w-fit">
+                {responses
+                  .filter(
+                    (response) => response.question_id === question.question_id
+                  )
+                  .map((response) => (
+                    <li
+                      key={response.response_id}
+                      className="flex items-center py-1 text-sm sm:text-lg lg:text-xl"
                     >
-                      {response.option}
-                    </label>
-                  </li>
-                ))}
-            </ul>
-          </div>
-        ))}
+                      <input
+                        type="radio"
+                        className="mr-2 radio radio-xs checked:bg-red"
+                        id={response.response_id}
+                        name={`question_${question.question_id}`}
+                        value={response.option}
+                        onChange={(e) =>
+                          handleResponseChange(
+                            question.question_id,
+                            e.target.value
+                          )
+                        }
+                      />
+                      <label
+                        htmlFor={response.response_id}
+                        className="cursor-pointer"
+                      >
+                        {response.option}
+                      </label>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          );
+        })}
         <button
           type="submit"
           className="px-3 py-2 mt-8 text-sm font-medium text-white border border-solid rounded-full w-fit bg-brown border-brown sm:px-4 lg:px-5 lg:text-base hover:bg-white hover:text-brown hover:border-solid hover:border hover:border-brown active:scale-95"
@@ -107,7 +135,7 @@ function Quiz() {
           Submit
         </button>
       </form>
-    </>
+    </div>
   );
 }
 

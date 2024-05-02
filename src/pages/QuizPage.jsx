@@ -6,7 +6,7 @@ function QuizPage() {
   const quizRef = useRef(null);
 
   useEffect(() => {
-    document.title = "Take a Quiz";
+    document.title = "Quiz";
 
     if (clicked && quizRef.current) {
       setTimeout(() => {
