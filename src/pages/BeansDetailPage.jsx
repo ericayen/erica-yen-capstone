@@ -30,7 +30,11 @@ function BeansDetailPage() {
             key={item.coffee_id}
             className="mb-2 collapse collapse-plus bg-beige-light"
           >
-            <input type="radio" name="my-accordion-3" />
+            <input
+              type="checkbox"
+              name="my-accordion-3"
+              defaultChecked={data.length === 1}
+            />
             <h2 className="pl-12 text-lg font-medium lg:text-2xl collapse-title">
               {item.region}
             </h2>
@@ -38,16 +42,20 @@ function BeansDetailPage() {
               <div className="w-full bg-white card lg:card-side">
                 <div className="items-center card-body">
                   <p className="text-sm lg:text-base">
-                    <span className="font-medium">Countries:</span>{" "}
+                    <span className="font-medium">Countries: </span>
                     {item.countries}
                   </p>
                   <p className="text-sm lg:text-base">
-                    <span className="font-medium">Roast profile:</span>{" "}
+                    <span className="font-medium">Roast profile: </span>
                     {item.roast_profile}
                   </p>
                   <p className="text-sm lg:text-base">
-                    <span className="font-medium">Flavor profile:</span>{" "}
+                    <span className="font-medium">Flavor profile: </span>
                     {item.flavor}
+                  </p>
+                  <p className="text-sm lg:text-base">
+                    <span className="font-medium">Acidity: </span>
+                    {item.acidity}
                   </p>
                 </div>
               </div>

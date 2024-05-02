@@ -41,7 +41,7 @@ function BeansCard({ arabicaData, robustaData, libericaData, excelsaData }) {
 
   return (
     <div className="mb-2 collapse collapse-plus bg-beige-light">
-      <input type="radio" name="my-accordion-3" />
+      <input type="checkbox" name="my-accordion-3" />
       <h2 className="pl-12 text-lg font-medium lg:text-2xl collapse-title">
         {getTitle(data)}
       </h2>
