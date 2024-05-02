@@ -25,14 +25,16 @@ function Header() {
                   : ""
               }`}
             >
-              <img
-                src={logo}
-                className={`${
-                  location.pathname === url && location.pathname !== "/"
-                    ? "inline w-4 animate-bounce mx-0.5 sm:w-6 lg:w-8"
-                    : "hidden"
-                }`}
-              />
+              {url !== "/" && (
+                <img
+                  src={logo}
+                  className={`${
+                    location.pathname.includes(url)
+                      ? "inline w-4 animate-bounce mx-0.5 sm:w-6 lg:w-8"
+                      : "hidden"
+                  }`}
+                />
+              )}
               {title}
             </a>
           </>
