@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { apiUrl } from "../utils";
-import ResultCard from "../components/ResultCard";
+import ResultCard from "../components/DetailCard";
 
 function ResultPage() {
   const navigate = useNavigate();
@@ -23,6 +23,8 @@ function ResultPage() {
     getResults();
   }, []);
 
+  console.log(results);
+
   return (
     <main className="w-screen px-8 leading-loose text-center bg-white sm:px-24 lg:px-36 min-h-dvh font-ms text-brown-dark selection:bg-brown-light selection:text-white">
       <h1 className="pb-12 text-2xl lg:pb-28 sm:text-4xl lg:text-5xl">
@@ -33,11 +35,22 @@ function ResultPage() {
       {results.length > 0 && (
         <section>
           <h2>Top Match: </h2>
-          <ResultCard result={results[0]} />
+          <div className="p-8 mb-2 bg-beige-light">
+            <h2 className="text-lg font-medium lg:text-2xl">
+              {results[0].coffee_type} ({results[0].region})
+            </h2>
+            <ResultCard item={results[0]} />
+          </div>
+
           {results.length > 1 && (
             <div>
               <h2>Alternative: </h2>
-              <ResultCard result={results[1]} />
+              <div className="p-8 mb-2 bg-beige-light">
+                <h2 className="text-lg font-medium lg:text-2xl">
+                  {results[1].coffee_type} ({results[1].region})
+                </h2>
+                <ResultCard item={results[1]} />
+              </div>
             </div>
           )}
         </section>
