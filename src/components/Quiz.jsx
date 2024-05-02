@@ -57,8 +57,7 @@ function Quiz({ onSubmit }) {
       }
     });
     console.log("Total weight:", totalWeight);
-    setAnswers([]);
-    onSubmit();
+    onSubmit(answers);
     e.target.reset();
   };
 

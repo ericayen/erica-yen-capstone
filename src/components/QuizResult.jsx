@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
 
-function QuizResult() {
-  return (
-    <div>QuizResult</div>
-  )
+function QuizResult({ answers }) {
+  console.log(answers);
+  return <div className="pt-8">QuizResult</div>;
 }
 
-export default QuizResult
+export default QuizResult;

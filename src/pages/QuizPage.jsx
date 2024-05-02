@@ -5,7 +5,9 @@ import QuizResult from "../components/QuizResult";
 function QuizPage() {
   const [clicked, setClicked] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [answers, setAnswers] = useState();
   const quizRef = useRef(null);
+  const resultRef = useRef(null);
 
   useEffect(() => {
     document.title = "Take a Quiz";
@@ -20,17 +22,23 @@ function QuizPage() {
     }
   }, [clicked]);
 
+  useEffect(() => {
+    if (submitted) {
+      window.scrollTo({
+        top: resultRef.current.offsetTop,
+        behavior: "smooth",
+      });
+    }
+  }, [submitted]);
+
   const handleClick = () => {
     setClicked(true);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (answers) => {
     setSubmitted(true);
-    console.log("Form submitted. submitted:", submitted);
+    setAnswers(answers);
   };
-
-  console.log("clicked:", clicked);
-  console.log("submitted:", submitted);
 
   return (
     <main className="w-screen px-8 leading-loose text-center bg-white sm:px-24 lg:px-36 min-h-dvh font-ms text-brown-dark selection:bg-brown-light selection:text-white">
@@ -41,18 +49,26 @@ function QuizPage() {
       <h2 className="text-base sm:text-lg lg:text-2xl ">
         Find out what coffee best matches your preferences
       </h2>
-      <button
-        onClick={() => handleClick()}
-        className="px-3 py-2 mt-8 text-sm font-medium text-white border border-solid rounded-full w-fit bg-brown border-brown sm:px-4 lg:px-5 lg:text-base hover:bg-white hover:text-brown hover:border-solid hover:border hover:border-brown active:scale-95"
-      >
-        Let's start!
-      </button>
+      {!submitted && (
+        <>
+          <button
+            onClick={() => handleClick()}
+            className="px-3 py-2 mt-8 text-sm font-medium text-white border border-solid rounded-full w-fit bg-brown border-brown sm:px-4 lg:px-5 lg:text-base hover:bg-white hover:text-brown hover:border-solid hover:border hover:border-brown active:scale-95"
+          >
+            Let's start!
+          </button>
+        </>
+      )}
       {clicked && !submitted && (
         <div ref={quizRef} className="h-dvh">
           <Quiz onSubmit={handleSubmit} />
         </div>
       )}
-      {submitted && <QuizResult />}
+      {submitted && (
+        <div ref={resultRef}>
+          <QuizResult answers={answers} />
+        </div>
+      )}
     </main>
   );
 }
