@@ -22,14 +22,14 @@ function HomePage() {
   }, []);
 
   return (
-    <body className="px-2 bg-white min-h-dvh selection:bg-brown-light selection:text-white">
+    <main className="px-2 bg-white min-h-dvh selection:bg-brown-light selection:text-white">
       <div className="flex flex-col items-center content-between justify-center">
-        <h1 className="w-screen overflow-hidden text-2xl leading-loose text-center text-brown whitespace-nowrap animate-typing font-ms sm:text-4xl lg:text-5xl">
+        <div className="w-screen pt-12 overflow-hidden text-2xl leading-loose text-center text-brown whitespace-nowrap animate-typing font-ms sm:text-4xl lg:text-5xl lg:pt-20">
           Welcome to{" "}
           <span className="text-3xl font-semibold text-brown-dark pe-2 sm:text-6xl lg:text-7xl">
             Express-<span className="inline-block animate-bounce">o</span>
           </span>
-        </h1>
+        </div>
       </div>
 
       {showComponent && (
@@ -53,14 +53,17 @@ function HomePage() {
       {showButton && (
         <div className="py-2 text-center font-ms animate-fade">
           <button
-            onClick={() => navigate("/about")}
-            className="px-3 py-2 text-xs font-medium text-white rounded-full bg-brown sm:px-4 lg:px-5 sm:text-sm lg:text-xl hover:bg-white hover:text-brown hover:border-solid hover:border hover:border-brown active:scale-95"
+            onClick={() => {
+              window.scrollTo(0, 0);
+              navigate("/about");
+            }}
+            className="mt-0"
           >
             Let's get roasting!
           </button>
         </div>
       )}
-    </body>
+    </main>
   );
 }
 

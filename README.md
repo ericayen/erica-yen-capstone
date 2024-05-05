@@ -1,8 +1,6 @@
-# Project Title
+# Express-o
 
-Express-o
-
-The title is a play on the word _espresso_, which is commonly mispronounced as _ex-press-o_, and embodies what I hope this app will acheive: an _express_ path into the coffee world.
+The title is a play on the word _espresso_, which is commonly mispronounced as _ex-press-o_, and embodies what I hope this app will acheive: an _express_ path into the world of coffee.
 
 ## Overview
 

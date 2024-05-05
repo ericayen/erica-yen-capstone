@@ -68,6 +68,7 @@ function Quiz() {
         top: quizRef.current.offsetTop,
         behavior: "smooth",
       });
+
       setQuestions(updated);
       alert("Please answer all the questions!");
       return;
@@ -118,7 +119,7 @@ function Quiz() {
                       />
                       <label
                         htmlFor={response.response_id}
-                        className="cursor-pointer"
+                        className="cursor-pointer hover:text-red"
                       >
                         {response.option}
                       </label>
@@ -128,10 +129,7 @@ function Quiz() {
             </div>
           );
         })}
-        <button
-          type="submit"
-          className="px-3 py-2 mt-8 text-sm font-medium text-white border border-solid rounded-full w-fit bg-brown border-brown sm:px-4 lg:px-5 lg:text-base hover:bg-white hover:text-brown hover:border-solid hover:border hover:border-brown active:scale-95"
-        >
+        <button type="submit" className="mt-8">
           Submit
         </button>
       </form>
