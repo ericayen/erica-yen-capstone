@@ -28,8 +28,8 @@ function BeansPage() {
   }, []);
 
   return (
-    <main className="w-screen px-8 leading-loose text-center bg-white sm:px-24 lg:px-36 min-h-dvh font-ms text-brown-dark selection:bg-brown-light selection:text-white">
-      <h1 className="pb-12 text-2xl lg:pb-28 sm:text-4xl lg:text-5xl">
+    <main>
+      <h1>
         <span className="text-brown">About </span>
         <span className="font-semibold">Beans</span>
       </h1>
