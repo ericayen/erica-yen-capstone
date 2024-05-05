@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { apiUrl } from "../utils";
 import DetailCard from "../components/DetailCard";
 
 function ResultPage() {
-  const navigate = useNavigate();
   const { state } = useLocation();
   const [results, setResults] = useState([]);
 
@@ -57,22 +56,12 @@ function ResultPage() {
       )}
 
       <div className="flex justify-center mt-8 mb-16 gap-x-6">
-        <button
-          onClick={() => {
-            window.scrollTo(0, 0);
-            navigate("/quiz");
-          }}
-        >
+        <a href="/quiz" className="button">
           Retake Quiz
-        </button>
-        <button
-          onClick={() => {
-            window.scrollTo(0, 0);
-            navigate("/beans");
-          }}
-        >
+        </a>
+        <a href="/beans" className="button">
           Learn More
-        </button>
+        </a>
       </div>
     </main>
   );

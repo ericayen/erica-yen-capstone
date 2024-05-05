@@ -31,7 +31,9 @@ function QuizPage() {
       <h2 className="mb-4 text-base sm:text-lg lg:text-2xl">
         Find out what coffee best matches your preferences
       </h2>
-      <button onClick={() => handleClick()}>Let's start!</button>
+      <button className="button" onClick={() => handleClick()}>
+        Let's start!
+      </button>
       {clicked && (
         <div ref={quizRef} className="h-dvh">
           <Quiz />

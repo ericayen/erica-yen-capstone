@@ -64,8 +64,9 @@ function Quiz() {
         ),
       }));
 
+      const quizOffset = quizRef.current.offsetTop - 60;
       window.scrollTo({
-        top: quizRef.current.offsetTop,
+        top: quizOffset,
         behavior: "smooth",
       });
 
@@ -129,7 +130,7 @@ function Quiz() {
             </div>
           );
         })}
-        <button type="submit" className="mt-8">
+        <button type="submit" className="mt-8 button">
           Submit
         </button>
       </form>

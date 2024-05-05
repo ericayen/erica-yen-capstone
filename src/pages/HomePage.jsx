@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 const logo = require("../assets/Logo/logo.png");
 
 function HomePage() {
-  const navigate = useNavigate();
   const [showComponent, setShowComponent] = useState(false);
   const [showButton, setShowButton] = useState(false);
 
@@ -52,15 +50,9 @@ function HomePage() {
 
       {showButton && (
         <div className="py-2 text-center font-ms animate-fade">
-          <button
-            onClick={() => {
-              window.scrollTo(0, 0);
-              navigate("/about");
-            }}
-            className="mt-0"
-          >
+          <a href="/about" className="mt-0 button">
             Let's get roasting!
-          </button>
+          </a>
         </div>
       )}
     </main>

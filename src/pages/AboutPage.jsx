@@ -47,8 +47,12 @@ function AboutPage() {
         </div>
       </section>
       <div className="flex justify-center gap-x-6">
-        <a>Explore beans</a>
-        <a>Take a quiz</a>
+        <a href="/beans" className="button">
+          Explore beans
+        </a>
+        <a href="/quiz" className="button">
+          Take a quiz
+        </a>
       </div>
     </main>
   );

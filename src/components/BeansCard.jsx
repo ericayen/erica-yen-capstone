@@ -22,8 +22,8 @@ function BeansCard({ arabicaData, robustaData, libericaData, excelsaData }) {
   function getTitle(data) {
     if (data.length > 0 && data[0].coffee_type) {
       return data[0].coffee_type;
-      // } else {
-      //   return "Title not available";
+    } else {
+      console.log("Title not available");
     }
   }
 
@@ -31,7 +31,7 @@ function BeansCard({ arabicaData, robustaData, libericaData, excelsaData }) {
     if (data.length > 0 && data[0].history) {
       return data[0].history;
     } else {
-      return "History data not available";
+      console.log("History data not available");
     }
   }
 
@@ -50,7 +50,9 @@ function BeansCard({ arabicaData, robustaData, libericaData, excelsaData }) {
         <div className="w-full bg-white card lg:card-side">
           <div className="items-center card-body">
             <p className="text-sm lg:text-base">{getHistory(data)}</p>
-            <button onClick={handleLeanMore}>Learn more</button>
+            <button onClick={handleLeanMore} className="button">
+              Learn more
+            </button>
           </div>
         </div>
       </div>

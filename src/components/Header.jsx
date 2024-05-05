@@ -14,7 +14,7 @@ function Header() {
       if (scrollTop > lastScrollTop) {
         setNavbarStyle({ top: "-60px", transition: "0.3s" });
       } else {
-        setNavbarStyle({ top: "0" });
+        setNavbarStyle({ top: "0", transition: "0.2s" });
       }
       setLastScrollTop(scrollTop);
     };

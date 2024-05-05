@@ -10,7 +10,7 @@
   h1 {
     @apply p-12 text-2xl lg:pb-24 lg:pt-20 sm:text-4xl lg:text-5xl;
   }
-  button {
+  .button {
     @apply px-3 py-2 mt-4 text-sm font-medium text-white border border-solid rounded-full w-fit bg-brown border-brown sm:px-4 lg:px-5 lg:text-base hover:bg-white hover:text-brown hover:border-solid hover:border hover:border-brown active:scale-95;
   }
 }
