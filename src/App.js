@@ -9,6 +9,7 @@ import BeansDetailPage from "./pages/BeansDetailPage";
 import QuizPage from "./pages/QuizPage";
 import ResultPage from "./pages/ResultPage";
 import Footer from "./components/Footer";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/beans/:id" element={<BeansDetailPage />} />
         <Route path="/quiz" element={<QuizPage />} />
         <Route path="/quiz/result" element={<ResultPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

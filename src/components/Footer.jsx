@@ -7,7 +7,7 @@ function Footer() {
   return (
     <div
       className={`pb-4 text-xs text-center bg-white font-ms text-brown md:text-sm lg:text-base selection:bg-brown-light selection:text-white ${
-        location.pathname === "/quiz" ? "pt-60" : "sm:pt-16 lg:pt-24 "
+        location.pathname === "/quiz" ? "pt-60" : "pt-16 lg:pt-24 "
       }`}
     >
       <a
