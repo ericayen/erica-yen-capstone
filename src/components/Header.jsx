@@ -38,12 +38,13 @@ function Header() {
           ["About", "/about"],
           ["Beans", "/beans"],
           ["Quiz", "/quiz"],
+          ["Forum", "/comments"],
         ].map(([title, url], index) => {
           return (
             <div key={index}>
               <a
                 href={url}
-                className={`leading-loose rounded-full p-3 font-medium text-xs md:text-sm lg:text-base hover:bg-beige-light ${
+                className={`leading-loose rounded-full p-2 sm:p-4 font-medium text-xs md:text-sm lg:text-base hover:bg-beige-light ${
                   location.pathname === url ||
                   (url !== "/" && location.pathname.includes(url))
                     ? "text-brown-dark"
@@ -57,6 +58,7 @@ function Header() {
                 {url !== "/" && (
                   <img
                     src={logo}
+                    alt="logo"
                     className={`${
                       location.pathname.includes(url)
                         ? "inline w-4 animate-bounce mx-0.5 sm:w-6 lg:w-8"
