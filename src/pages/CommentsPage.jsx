@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import { apiUrl } from "../utils";
@@ -6,6 +6,7 @@ import InputField from "../components/InputField";
 import CommentCard from "../components/CommentCard";
 
 function CommentsPage() {
+  const formRef = useRef(null);
   const [comments, setComments] = useState([]);
   const [formState, setFormState] = useState({
     name: "",
@@ -34,8 +35,13 @@ function CommentsPage() {
     }
 
     if (Object.keys(errors).length > 0) {
-      alert("Please fill out all the fields!");
+      const formOffset = formRef.current.offsetTop - 60;
+      window.scrollTo({
+        top: formOffset,
+        behavior: "smooth",
+      });
       setFormErrors(errors);
+      alert("Please fill out all the fields!");
       return;
     }
 
@@ -50,9 +56,7 @@ function CommentsPage() {
     };
 
     try {
-      console.log(newComment);
       const response = await axios.post(`${apiUrl}/comments`, newComment);
-      console.log(response);
       setComments([...comments, response.data]);
       setFormState({
         name: "",
@@ -71,48 +75,43 @@ function CommentsPage() {
         <span className="font-semibold">Chat!</span>
       </h1>
 
-      <form
-        className="w-full px-4 pb-4 bg-beige-light card"
-        onSubmit={handleSubmit}
-      >
-        <div className="items-center w-full pt-4 pb-6 mt-4 bg-white rounded-2xl card-body">
-          <div className="w-full">
-            <InputField
-              type="text"
-              name="name"
-              label="Name"
-              value={formState.name}
-              error={formErrors.name}
-              onChange={(e) =>
-                setFormState({ ...formState, name: e.target.value })
-              }
-              placeholder="Type here..."
-            />
-            <InputField
-              type="text"
-              name="comment"
-              label="Comment"
-              value={formState.comment}
-              error={formErrors.comment}
-              onChange={(e) =>
-                setFormState({ ...formState, comment: e.target.value })
-              }
-              placeholder="Type here..."
-            />
-          </div>
-          <div className="w-full sm:text-end">
-            <button type="submit" className="w-full mt-3 lg:w-fit button">
-              Add comment
-            </button>
-          </div>
-        </div>
-      </form>
-
-      <section className="pt-12 lg:pt-24">
-        <h2 className="text-lg font-medium lg:text-2xl text-brown">Comments</h2>
-        <ul className="w-full px-4 pb-4 bg-beige-light card">
+      <section>
+        <div className="w-full px-4 pb-4 bg-beige-light card">
+          <form onSubmit={handleSubmit} ref={formRef}>
+            <div className="items-center w-full p-4 pt-1 mt-4 bg-white rounded-2xl card-body">
+              <div className="w-full">
+                <InputField
+                  type="text"
+                  name="name"
+                  label="Name"
+                  value={formState.name}
+                  error={formErrors.name}
+                  onChange={(e) =>
+                    setFormState({ ...formState, name: e.target.value })
+                  }
+                  placeholder="Type here..."
+                />
+                <InputField
+                  type="text"
+                  name="comment"
+                  label="Comment"
+                  value={formState.comment}
+                  error={formErrors.comment}
+                  onChange={(e) =>
+                    setFormState({ ...formState, comment: e.target.value })
+                  }
+                  placeholder="Type here..."
+                />
+              </div>
+              <div className="w-full sm:text-end">
+                <button type="submit" className="w-full mt-2 lg:w-fit button">
+                  Add comment
+                </button>
+              </div>
+            </div>
+          </form>
           <CommentCard comments={comments} />
-        </ul>
+        </div>
       </section>
     </main>
   );

@@ -6,14 +6,14 @@ function CommentCard({ comments }) {
   }
 
   return (
-    <>
+    <ul>
       {comments.map((comment) => (
         <li
           key={comment.comment_id}
-          className="items-center w-full mt-4 bg-white rounded-2xl card-body"
+          className="items-center w-full p-4 mt-3 bg-white rounded-2xl card-body"
         >
           <div className="w-full sm:flex">
-            <div className="avatar">
+            <div className="mt-1 avatar">
               <div className="w-12 h-12 rounded-full mask mask-squircle bg-brown-light">
                 {comment.avatar && (
                   <img src={`${comment.avatar}`} alt="avatar" />
@@ -21,9 +21,13 @@ function CommentCard({ comments }) {
               </div>
             </div>
             <div className="w-full sm:pl-4">
-              <div className="sm:flex">
-                <p className="sm:text-start">{comment.name}</p>
-                <p className="sm:text-end">{comment.date}</p>
+              <div className="sm:flex sm:mb-2">
+                <p className="text-sm font-medium sm:text-start lg:text-base">
+                  {comment.name}
+                </p>
+                <p className="text-sm sm:text-end lg:text-base">
+                  {comment.date}
+                </p>
               </div>
               <p className="text-sm lg:text-base sm:text-start">
                 {comment.comment}
@@ -32,7 +36,7 @@ function CommentCard({ comments }) {
           </div>
         </li>
       ))}
-    </>
+    </ul>
   );
 }
 
