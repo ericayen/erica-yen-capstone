@@ -38,6 +38,7 @@ function Header() {
           ["About", "/about"],
           ["Beans", "/beans"],
           ["Quiz", "/quiz"],
+          ["Forum", "/comments"],
         ].map(([title, url], index) => {
           return (
             <div key={index}>
