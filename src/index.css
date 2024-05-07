@@ -3,8 +3,28 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  main {
+    @apply w-screen px-8 leading-loose text-center bg-white sm:px-16 lg:px-36 xl:px-48 2xl:px-96 min-h-dvh font-ms text-brown-dark selection:bg-brown-light selection:text-white;
+  }
+  h1 {
+    @apply p-12 text-2xl lg:pb-24 lg:pt-20 sm:text-4xl lg:text-5xl;
+  }
+  .button {
+    @apply px-3 py-2 mt-4 text-sm font-medium text-white border border-solid rounded-full w-fit bg-brown border-brown sm:px-4 lg:px-5 lg:text-base hover:bg-white hover:text-brown hover:border-solid hover:border hover:border-brown active:scale-95;
+  }
+}
+
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+a {
+  text-decoration: none;
 }
