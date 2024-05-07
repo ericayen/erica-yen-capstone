@@ -20,6 +20,7 @@ function CommentsPage() {
   };
 
   useEffect(() => {
+    document.title = "Forum";
     getComments();
   }, []);
 

@@ -22,16 +22,12 @@ function BeansCard({ arabicaData, robustaData, libericaData, excelsaData }) {
   function getTitle(data) {
     if (data.length > 0 && data[0].coffee_type) {
       return data[0].coffee_type;
-    } else {
-      console.log("Title not available");
     }
   }
 
   function getHistory(data) {
     if (data.length > 0 && data[0].history) {
       return data[0].history;
-    } else {
-      console.log("History data not available");
     }
   }
 
