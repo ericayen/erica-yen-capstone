@@ -33,7 +33,8 @@ Run `npm install` to install all the required packages
   - `npm i knex`
   - `npm i mysql2`
 
-Once all the `node_modules` have been installed, run `npm start` to mount the React app, and run `node index.js` to start the server.
+Once all the `node_modules` have been installed, run `npm start` to mount the React app, and run `node index.js` to start the server. 
+Once the server is running, run `npm migrate` to run the migrations, then run `npm seed` to seed the database.
 
 ## Implementation
 
