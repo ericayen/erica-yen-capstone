@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 function NotFoundPage() {
+  useEffect(() => {
+    document.title = "404 Not Found";
+  });
   return (
     <main>
       <div className="text-center">
@@ -10,7 +13,7 @@ function NotFoundPage() {
         </h2>
         <div className="flex items-center justify-center mt-12 gap-x-6">
           <a href="/">
-            <button>Go back home</button>
+            <button className="button">Home</button>
           </a>
         </div>
       </div>

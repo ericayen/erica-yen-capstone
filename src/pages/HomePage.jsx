@@ -8,14 +8,14 @@ function HomePage() {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setShowComponent(true);
-    }, 2200);
+    }, 1500);
     return () => clearTimeout(timeout);
   }, []);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
       setShowButton(true);
-    }, 3000);
+    }, 2100);
     return () => clearTimeout(timeout);
   }, []);
 

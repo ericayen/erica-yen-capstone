@@ -19,7 +19,7 @@ module.exports = {
         50: "50dvh",
       },
       animation: {
-        typing: "typing 3s steps(35)",
+        typing: "typing 2.5s steps(35)",
         fade: "fadeIn 0.5s ease-in-out",
       },
       keyframes: {
