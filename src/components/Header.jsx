@@ -36,6 +36,7 @@ function Header() {
         {[
           ["Home", "/"],
           ["About", "/about"],
+          ["Coffee", "/coffee"],
           ["Beans", "/beans"],
           ["Quiz", "/quiz"],
           ["Forum", "/comments"],

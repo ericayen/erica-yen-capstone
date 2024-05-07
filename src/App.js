@@ -11,6 +11,7 @@ import ResultPage from "./pages/ResultPage";
 import CommentsPage from "./pages/CommentsPage";
 import Footer from "./components/Footer";
 import NotFoundPage from "./pages/NotFoundPage";
+import AboutCoffee from "./pages/AboutCoffee";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/quiz" element={<QuizPage />} />
         <Route path="/quiz/result" element={<ResultPage />} />
         <Route path="/comments" element={<CommentsPage />} />
+        <Route path="/coffee" element={<AboutCoffee />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
