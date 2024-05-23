@@ -19,7 +19,7 @@ function DetailCard({ item }) {
           {item.roast_profile}
         </p>
         <p className="text-sm lg:text-base">
-          <span className="font-medium">flavour profile: </span>
+          <span className="font-medium">Flavour profile: </span>
           {item.flavour}
         </p>
         <p className="text-sm lg:text-base">

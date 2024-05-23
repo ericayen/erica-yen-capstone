@@ -55,7 +55,7 @@ function ResultPage() {
         </section>
       )}
 
-      <div className="flex justify-center mt-8 mb-16 gap-x-6">
+      <div className="flex justify-center pb-16 mt-8 gap-x-6">
         <a href="/quiz" className="button">
           Retake Quiz
         </a>
